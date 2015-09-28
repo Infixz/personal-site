@@ -1,14 +1,14 @@
 # coding:utf-8
 
 import tornado.httpserver as httpserver
-import tornado.ioloop ioloop
+import tornado.ioloop as ioloop
 import tornado.web as web
 
 class IndexHandler(web.RequestHandler):
 	"""docstring for IndexHandler"""
-	def __init__(self, arg):
-		super(IndexHandler, self).__init__()
-		self.arg = arg
+	#def __init__(self, arg):
+	#	super(IndexHandler, self).__init__()
+	#	self.arg = arg
 	def get(self):
 		greetingwords = self.get_argument('greeting','hello')
 		self.write(greetingwords + ',see you again now')
