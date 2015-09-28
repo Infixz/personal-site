@@ -14,7 +14,10 @@ class IndexHandler(web.RequestHandler):
 		greetingwords = self.get_argument('greeting','hello')
 		self.write(greetingwords + u',再次见面分外眼红')
 	def write_error(self,status_code,**Kwargs):
-		self.write("<h1>日了狗，你把我服务器弄坏了！</h1>")
+		resp = '' 
+		if status_code == 404:
+			resp = '404只'
+		self.write("<h1>日了%s狗，你把我服务器弄坏了！</h1>"% resp)
 
 
 class ResumeHandler(web.RequestHandler):
@@ -25,7 +28,10 @@ class ResumeHandler(web.RequestHandler):
 	def get(self):
 		self.render('resume.html')
 	def write_error(self,status_code,**Kwargs):
-		self.write("<h1>日了狗，你把我服务器弄坏了！</h1>")
+		resp = '' 
+		if status_code == 404:
+			resp = '404只'
+		self.write("<h1>日了%s狗，你把我服务器弄坏了！</h1>"% resp)
 
 
 if __name__ == '__main__':
