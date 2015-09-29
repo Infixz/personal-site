@@ -25,11 +25,6 @@ class ResumeHandler(web.RequestHandler):
 	#	self.arg = arg
 	def get(self):
 		self.render('resume.html')
-	def write_error(self,status_code,**Kwargs):
-		resp = '' 
-		if status_code == 404:
-			resp = '404只'
-		self.write("<h1>日了%s狗，你把我服务器弄坏了！</h1>"% resp)
 
 
 class App(web.Application):
