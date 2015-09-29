@@ -7,7 +7,7 @@ import tornado.web as web
 
 from pymongo import MongoClient
 
-from config import settings
+from config import settings,DB_HOST,DB_PORT
 
 
 class IndexHandler(web.RequestHandler):
@@ -33,7 +33,7 @@ class App(web.Application):
 	"""docstring for App"""
 	def __init__(self):
 		handlers = [(r'/',IndexHandler),(r'/resume',ResumeHandler)]
-		client = MongoClient()
+		client = MongoClient(DB_HOST,DB_HOST)
 		self.db = client.usertest
 		web.Application.__init__(self,handlers,**settings)
 
