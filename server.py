@@ -34,7 +34,7 @@ class ResumeHandler(web.RequestHandler):
 
 class App(web.Application):
 	"""docstring for App"""
-	def __init__(self, arg):
+	def __init__(self):
 		handlers = [(r'/',IndexHandler),(r'/resume',ResumeHandler)]
 		template_path = os.path.join(os.path.dirname(__file__),"templates")
 		static_path = os.path.join(os.path.dirname(__file__), "static")
