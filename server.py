@@ -33,8 +33,6 @@ class App(web.Application):
 	"""docstring for App"""
 	def __init__(self):
 		handlers = [(r'/',IndexHandler),(r'/resume',ResumeHandler)]
-		template_path = os.path.join(os.path.dirname(__file__),"templates")
-		static_path = os.path.join(os.path.dirname(__file__), "static")
 		client = MongoClient()
 		self.db = client.usertest
 		web.Application.__init__(self,handlers,**settings)
