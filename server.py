@@ -1,11 +1,13 @@
+#!/usr/bin/python
 # coding:utf-8
-import os.path
 
 import tornado.httpserver as httpserver
 import tornado.ioloop as ioloop
 import tornado.web as web
 
 from pymongo import MongoClient
+
+from config import settings
 
 
 class IndexHandler(web.RequestHandler):
@@ -35,7 +37,7 @@ class App(web.Application):
 		static_path = os.path.join(os.path.dirname(__file__), "static")
 		client = MongoClient()
 		self.db = client.usertest
-		web.Application.__init__(self,handlers,template_path,static_path,debug=True)
+		web.Application.__init__(self,handlers,**settings)
 
 
 
@@ -43,8 +45,7 @@ class App(web.Application):
 if __name__ == '__main__':
 	"""app = web.Application(
 		handlers=[(r'/',IndexHandler),(r'/resume',ResumeHandler)],
-		template_path=os.path.join(os.path.dirname(__file__),"templates"),
-		static_path=os.path.join(os.path.dirname(__file__), "static"),
+		
 		debug=True
 		)"""
 	http_server = httpserver.HTTPServer(App())
