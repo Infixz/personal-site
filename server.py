@@ -12,40 +12,36 @@ from config import settings,DB_HOST,DB_PORT
 
 class IndexHandler(web.RequestHandler):
 	"""docstring for IndexHandler"""
-	#def __init__(self, arg):
-	#	super(IndexHandler, self).__init__()
-	#	self.arg = arg
 	def get(self):
 		greetingwords = self.get_argument('greeting','hello')
-		self.write(greetingwords + u',再次见面分外眼红')
+		self.write(greetingwords + ',再次见面分外眼红')
 
 
 class ResumeHandler(web.RequestHandler):
 	"""docstring for ResumeHandler"""
-	#def __init__(self, arg):
-	#	super(ResumeHandler, self).__init__()
-	#	self.arg = arg
 	def get(self):
 		self.render('resume.html')
 
 
+class MsgHandler(web.RequestHandler):
+	"""docstring for MsgHandler"""
+	def post(self):
+		self.coll = self.application.db.leavemsg
+
+		
+		
 class App(web.Application):
 	"""docstring for App"""
 	def __init__(self):
-		handlers = [(r'/',IndexHandler),(r'/resume',ResumeHandler)]
-		client = MongoClient(DB_HOST,DB_HOST)
-		self.db = client.usertest
+		handlers = [(r'/',IndexHandler),
+					(r'/resume',ResumeHandler)
+					(r'/leavemsg,MsgHandler)
+					]
+		self.db = MongoClient(DB_HOST,DB_HOST)['usertest']
 		web.Application.__init__(self,handlers,**settings)
 
 
-
-
 if __name__ == '__main__':
-	"""app = web.Application(
-		handlers=[(r'/',IndexHandler),(r'/resume',ResumeHandler)],
-		
-		debug=True
-		)"""
 	http_server = httpserver.HTTPServer(App())
 	http_server.listen(8080)
 	ioloop.IOLoop.instance().start()
