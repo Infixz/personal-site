@@ -14,7 +14,7 @@ class IndexHandler(web.RequestHandler):
 	"""docstring for IndexHandler"""
 	def get(self):
 		greetingwords = self.get_argument('greeting','hello')
-		self.write(greetingwords + ',再次见面分外眼红')
+		self.write(greetingwords + u',再次见面分外眼红')
 
 
 class ResumeHandler(web.RequestHandler):
