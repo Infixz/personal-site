@@ -46,5 +46,6 @@ class App(web.Application):
 
 if __name__ == '__main__':
 	http_server = httpserver.HTTPServer(App())
+	print 'app has runs on server'
 	http_server.listen(8080)
 	ioloop.IOLoop.instance().start()
