@@ -40,7 +40,7 @@ class App(web.Application):
 					(r'/resume',ResumeHandler),
 					(r'/leavemsg',MsgHandler)
 					]
-		self.db = MongoClient(DB_HOST,DB_HOST)['usertest']
+		self.db = MongoClient(DB_HOST,DB_PORT)['usertest']
 		web.Application.__init__(self,handlers,**settings)
 
 
