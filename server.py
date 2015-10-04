@@ -26,8 +26,11 @@ class ResumeHandler(web.RequestHandler):
 class MsgHandler(web.RequestHandler):
 	"""docstring for MsgHandler"""
 	def post(self):
-		self.coll = self.application.db.leavemsg
-
+		print 'MsgHandler post'
+		try:
+			self.coll = self.application.db.leavemsg
+		except:
+			print 'except'
 		
 		
 class App(web.Application):
