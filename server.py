@@ -37,7 +37,7 @@ class App(web.Application):
 	"""docstring for App"""
 	def __init__(self):
 		handlers = [(r'/',IndexHandler),
-					(r'/resume',ResumeHandler)
+					(r'/resume',ResumeHandler),
 					(r'/leavemsg',MsgHandler)
 					]
 		self.db = MongoClient(DB_HOST,DB_HOST)['usertest']
