@@ -13,9 +13,9 @@ from config import settings,DB_HOST,DB_PORT
 class IndexHandler(web.RequestHandler):
 	"""docstring for IndexHandler"""
 	def get(self):
-		greetingwords = self.get_argument('greeting','hello')
-		self.write(greetingwords + u',再次见面分外眼红')
-
+		# greetingwords = self.get_argument('greeting','hello')
+		# self.write(greetingwords + u',再次见面分外眼红')
+		self.render('index.html')
 
 class ResumeHandler(web.RequestHandler):
 	"""docstring for ResumeHandler"""
