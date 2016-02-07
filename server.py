@@ -31,14 +31,19 @@ class MsgHandler(web.RequestHandler):
 			self.coll = self.application.db.leavemsg
 		except:
 			print 'except'
-		
+
+
+class GoogleVerify(web.RequestHandler):
+	def get(self):
+		self.render('google05df3613559d1aa7.html')		
 		
 class App(web.Application):
 	"""docstring for App"""
 	def __init__(self):
 		handlers = [(r'/',IndexHandler),
 					(r'/resume',ResumeHandler),
-					(r'/leavemsg',MsgHandler)
+					(r'/leavemsg',MsgHandler),
+					(r'/google05df3613559d1aa7.html',GoogleVerify)
 					]
 		self.db = MongoClient(DB_HOST,DB_PORT)['usertest']
 		web.Application.__init__(self,handlers,**settings)
